@@ -1,0 +1,236 @@
+#!/bin/bash
+
+#checks current user 
+
+currentuser=$(ls -l /dev/console | awk '{ print $3 }')
+
+echo "logged in user is " $currentuser
+
+pkill -f Adobe
+pkill -f Creative\ Cloud
+
+#This will check to make sure we have root permission
+
+if [[ EUID -ne 0 ]]; then
+    echo  "
+    ROOT PRIVILEDGES NEEDED!
+    You have to run this script as root.
+    Aborting...
+    "
+    exit 1
+else
+	echo "
+    ###################################
+        Creative Cloud Uninstaller
+    ###################################
+           Unofficial uninstaller
+    This software comes with absolutely
+                NO WARRANTY
+          Use it at your own risk.
+
+    "
+
+sleep 4
+
+    echo -e "
+    ------------- WARNING -------------
+     
+     Press CTRL+C in 5 seconds to ABORT
+        
+    -----------------------------------
+    "
+
+
+sleep 5
+
+	echo "    Removing Adobe apps..."
+	rm -rf /Applications/Adobe\ Acrobat\ Beta
+	rm -rf /Applications/Adobe\ After\ Effects\ 2020
+	rm -rf /Applications/Adobe\ Audition\ 2020
+	rm -rf /Applications/Adobe\ Character\ Animator\ 2020
+	rm -rf /Applications/Adobe\ Illustrator\ 2020
+	rm -rf /Applications/Adobe\ Lightroom\ Classic
+	rm -rf /Applications/Adobe\ Media\ Encoder\ 2020
+	rm -rf /Applications/Adobe\ Premiere\ Pro\ 2020
+	rm -rf /Applications/Adobe\ Premiere\ Rush\ CC
+    rm -rf /Applications/Adobe\ Lightroom\ CC
+    rm -rf /Applications/Adobe\ Photoshop\ 2020
+    rm -rf /Applications/Adobe\ After\ Effects 2020
+    rm -rf /Applications/Adobe\ Animate\ 2020
+    rm -rf /Applications/Audition\ 2020
+    rm -rf /Applications/Adobe\ Bridge\ 2020
+    rm -rf /Applications/Adobe\ Character\ Animator 2020
+    rm -rf /Applications/Adobe\ Dimension
+    rm -rf /Applications/Adobe\ Dreamweaver\ 2020
+    rm -rf "/Applications/Adobe Fuse CC (Beta)"
+    rm -rf /Applications/Adobe\ Illustrator 2020
+    rm -rf /Applications/Adobe\ InCopy\ 2020
+    rm -rf /Applications/Adobe\ InDesign\ 2020
+    rm -rf /Applications/Adobe\ Classic
+    rm -rf /Applications/Adobe\ Media\ Encoder 2020
+    rm -rf /Applications/Adobe\ Prelude\ 2020
+    rm -rf /Applications/Adobe\ Premiere Pro\ 2020
+    rm -rf /Applications/Adobe\ Premiere\ Rush CC
+    rm -rf /Applications/Adobe\ XD
+    rm -rf /Applications/Adobe\ Creative\ Cloud
+
+
+    echo "	Cleaning ~/Library..."
+    rm -rf /Users/$currentuser/Library/Application\ Scripts/com.adobe.accmac.ACCFinderSync
+    rm -rf /Users/$currentuser/Library/Application Support/Adobe/*
+    rm -rf /Users/$currentuser/Library/Caches/Adobe/*
+    rm -rf /Users/$currentuser/Library/Caches/Adobe\ Camera\ Raw\ 2/
+    rm -rf /Users/$currentuser/Library/Caches/Adobe\ InCopy/*
+    rm -rf /Users/$currentuser/Library/Caches/Adobe\ InDesign/
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.acc.AdobeDesktopService
+	rm -rf /Users/$currentuser/Library/Caches/com.adobe.Acrobat.Pro
+	rm -rf /Users/$currentuser/Library/Caches/com.adobe.Adobe-Animate-2020.application
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.AfterEffects
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.ame.application.14
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.Audition
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.bridge10
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.Character-Animator.application
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.dreamweaver-18.1
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.euclid-helper
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.illustrator
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.InCopy
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.InDesign
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.lightroomCC
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.LightroomClassicCC7
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.Photoshop
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.Prelude.CC14
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.PremierePro.14
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.PremiereRush1.2
+    rm -rf /Users/$currentuser/Library/Caches/com.adobe.xd
+    
+   
+    rm -rf /Users/$currentuser/Library/Containers/com.adobe.accmac.ACCFinderSync
+
+    rm -rf /Users/$currentuser/Library/Cookies/com.adobe.Acrobat.Pro.binarycookies
+    rm -rf /Users/$currentuser/Library/Cookies/com.adobe.lightroomCC.binarycookies
+    rm -rf /Users/$currentuser/Library/Cookies/com.adobe.xd.binarycookies
+
+    rm -rf /Users/$currentuser/Library/Group\ Containers/com.adobe.accmac.explinder
+
+    rm -rf /Users/$currentuser/Library/LaunchAgents/com.adobe.ccxprocess.plist
+    rm -rf /Users/$currentuser/Library/LaunchAgents/com.adobe.GC.Invoker-1.0.plist
+
+    rm -rf /Users/$currentuser/Library/Logs/Adobe
+    rm -rf /Users/$currentuser/Library/Logs/Adobe\ Illustrator\ 24/
+    rm -rf /Users/$currentuser/Library/Logs/AdobeDownload
+
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe\ Camera\ Raw\ 12.0\ Prefs/
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe\ Dreamweaver\ 2020\ Prefs/
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe Illustrator 24 Settings
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe InCopy
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe InDesign
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe Photoshop 2020 Paths
+    rm -rf /Users/$currentuser/Library/Preferences/Adobe Photoshop 2020 Settings
+    rm -rf /Users/$currentuser/Library/Preferences/adobe.com.Adobe-Spaces-Helper.plist
+    rm -rf /Users/$currentuser/Library/Preferences/ByHost/com.adobe.headlightscc.C64A6288-B4CA-5DE2-9F5E-5B3F25E3B470.plist
+    rm -rf /Users/$currentuser/Library/Preferences/ByHost/com.adobe.MacPDFMaker.C64A6288-B4CA-5DE2-9F5E-5B3F25E3B470.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.acc.AdobeCreativeCloud
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.acc.AdobeDesktopService.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.acc.HEXHelper.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.accmac.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Acrobat.Pro.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Adobe Media Encoder.14.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Adobe-Animate-2020.application.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Adobe-Animate-2020.application.uxp_com.adobe.ccx.start.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.AdobeAcroCEFHelper.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.After Effects.17.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.AfterEffects.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.ARMDC.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.ARMDCHelper.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Audition.13.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Audition.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.bridge10.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.cep.CEPHtmlEngine Helper.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Character Animator.3.1.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Character-Animator.application.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Common 12.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Common 13.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Common 14.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.crashreporter.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.CSXS.9.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.dimension.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.dreamweaver-18.1.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.dreamweaverhelper-20.0.0.15196
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.dynamiclinkmediaserver.12.1.4.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.euclid-helper.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Fuse.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.illustrator.uxp_com.adobe.ccx.start.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.InCopy.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.InDesign.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.lightroomCC.mcat-daemon.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.lightroomCC.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.LightroomClassicCC7.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Photoshop.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Photoshop.uxp_com.adobe.ccx.start.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Prelude.9.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Prelude.CC14.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Premiere Pro.14.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Premiere Rush.1.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.PremierePro.14.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.PremiereRush1.2.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.Synchronizer.Beta.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.Adobe.Team Projects.2.0.plist
+    rm -rf /Users/$currentuser/Library/Preferences/com.adobe.xd.plist
+   
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.Acrobat.Pro.savedState
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.ame.application.14.savedState
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.Audition.savedState
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.bridge10.savedState
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.Character-Animator.application.savedState
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.dimension.savedState
+    rm -rf /Users/$currentuser/Library/Saved\ Application\ State/com.adobe.dreamweaver-18.1.savedState
+
+
+ echo "		Scrubbing system directories	"
+ 	sudo rm -rf ./Library/Application\ Support/Adobe/
+ 	rm -rf ./Library/Application\ Support/Adobe\ Dimension\ CC
+ 	rm -rf ./Library/Application\ Support/Adobe/
+ 	rm -rf ./Library/LaunchAgents/com.adobe.*
+ 	rm -rf ./Library/LaunchDaemons/com.adobe.*
+ 	rm -rf ./Library/Logs/Adobe/*
+ 	rm -rf ./Library/Logs/CreativeCloud
+ 	rm -rf ./Library/Preferences/com.adobe.*
+ 	rm -rf ./Library/Preferences/com.Adobe.*
+ 	rm -rf /Applications/Utilities/Adobe\ Application\ Manager/
+ 	rm -rf /Applications/Utilities/Adobe\ Creative\ Cloud/
+ 	rm -rf /Applications/Utilities/Adobe\ Creative\ Cloud\ Experience/
+ 	rm -rf /Applications/Utilities/Adobe\ Instsallers/
+ 	rm -rf /Applications/Utilities/Adobe\ Sync/
+
+
+ echo "		Forgetting Creative Cloud 	"
+ 	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd2000610057
+	pkgutil --forget com.adobe.acrobat.Beta.viewer.appsupport.pkg.MUI
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1902110041
+	pkgutil --forget com.adobe.acrobat.Beta.viewer.browser.pkg.MUI
+	pkgutil --forget com.adobe.PDApp.AdobeApplicationManager.installer.pkg
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1902210064
+	pkgutil --forget com.adobe.acc.AdobeCreativeCloud
+	pkgutil --forget com.adobe.acrobat.Beta.viewer.app.pkg.MUI
+	pkgutil --forget com.adobe.Enterprise.install.C72102F5-9689-4452-B82A-B894360F0DF0
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1902210098
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1902010004
+	pkgutil --forget com.adobe.adobefonts.pkg
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1902110016
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1902210086
+	pkgutil --forget com.adobe.AcroServicesUpdater
+	pkgutil --forget com.adobe.armdc.app.pkg
+	pkgutil --forget com.adobe.acrobat.AcrobatBetaUpd1901210067
+	pkgutil --forget com.adobe.acrobat.Beta.viewer.preinstall.pkg.MUI
+	pkgutil --forget com.adobe.acrobat.Beta.viewer.print_pdf_services.pkg.MUI
+	pkgutil --forget com.adobe.acrobat.Beta.viewer.print_automator.pkg.MUI
+
+echo "
+    Uninstall Complete
+    "
+fi
+
+
+
+
